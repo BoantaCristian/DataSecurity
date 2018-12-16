@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1544967367 source:c:\users\boanta\desktop\facultate\data security\autokey\autokey\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<math.h>
+
