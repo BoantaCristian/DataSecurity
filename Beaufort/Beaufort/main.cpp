@@ -3,36 +3,36 @@
 #include<algorithm>
 using namespace std;
 
-string encrypt(string sirulNecriptat, string cheia)
+string encrypt(string unencryptedString, string key)
 {
-	string sirulCriptat(sirulNecriptat.length(), ' ');
-	for (int i = 0; i < sirulNecriptat.size(); i++)
-		sirulCriptat[i] = 'A' + ((cheia[i] - sirulNecriptat[i]) + 26) % 26;
-	return sirulCriptat;
+	string encryptedString(unencryptedString.length(), ' ');
+	for (int i = 0; i < unencryptedString.size(); i++)
+		encryptedString[i] = 'A' + ((key[i] - unencryptedString[i]) + 26) % 26;
+	return encryptedString;
 }
 
-string decrypt(string sirulCriptat, string cheia)
+string decrypt(string encryptedString, string key)
 {
-	string sirulDecriptat(sirulCriptat.length(), ' ');
-	for (int i = 0; i < sirulCriptat.size(); i++)
-		sirulDecriptat[i] = 'A' + ((cheia[i] - sirulCriptat[i]) + 26) % 26;
-	return sirulDecriptat;
+	string decryptedString(encryptedString.length(), ' ');
+	for (int i = 0; i < encryptedString.size(); i++)
+		decryptedString[i] = 'A' + ((key[i] - encryptedString[i]) + 26) % 26;
+	return decryptedString;
 }
 
 int main()
 {
-	string sirulNecriptat;
+	string unencryptedString;
 	cout << "Unencrypted string: ";
-	getline(cin, sirulNecriptat);
-	transform(sirulNecriptat.begin(), sirulNecriptat.end(), sirulNecriptat.begin(), ::toupper);
+	getline(cin, unencryptedString);
+	transform(unencryptedString.begin(), unencryptedString.end(), unencryptedString.begin(), ::toupper);
 	cout << "Key: ";
-	string cheia;
-	getline(cin, cheia);
-	transform(cheia.begin(), cheia.end(), cheia.begin(), ::toupper);
-	while (cheia.length() < sirulNecriptat.length())
-		cheia += cheia;
-	string sirulCriptat = encrypt(sirulNecriptat, cheia);
-	cout << "Crypted string : " << sirulCriptat << "\n";
-	cout << "Decrypted string : " << decrypt(sirulCriptat, cheia);
+	string key;
+	getline(cin, key);
+	transform(key.begin(), key.end(), key.begin(), ::toupper);
+	while (key.length() < unencryptedString.length())
+		key += key;
+	string encryptedString = encrypt(unencryptedString, key);
+	cout << "Uncrypted string : " << encryptedString << "\n";
+	cout << "Decrypted string : " << decrypt(encryptedString, key);
 	return 0;
 }
