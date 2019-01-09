@@ -3,7 +3,7 @@
 #include<algorithm>
 using namespace std;
 
-string cripteaza(string sirulNecriptat, string cheia)
+string encrypt(string sirulNecriptat, string cheia)
 {
 	string sirulCriptat(sirulNecriptat.length(), ' ');
 	for (int i = 0; i < sirulNecriptat.size(); i++)
@@ -11,7 +11,7 @@ string cripteaza(string sirulNecriptat, string cheia)
 	return sirulCriptat;
 }
 
-string decripteaza(string sirulCriptat, string cheia)
+string decrypt(string sirulCriptat, string cheia)
 {
 	string sirulDecriptat(sirulCriptat.length(), ' ');
 	for (int i = 0; i < sirulCriptat.size(); i++)
@@ -22,17 +22,17 @@ string decripteaza(string sirulCriptat, string cheia)
 int main()
 {
 	string sirulNecriptat;
-	cout << "Sirul necryptat: ";
+	cout << "Unencrypted string: ";
 	getline(cin, sirulNecriptat);
 	transform(sirulNecriptat.begin(), sirulNecriptat.end(), sirulNecriptat.begin(), ::toupper);
-	cout << "Valoarea cheii cu care criptam sirul: ";
+	cout << "Key: ";
 	string cheia;
 	getline(cin, cheia);
 	transform(cheia.begin(), cheia.end(), cheia.begin(), ::toupper);
 	while (cheia.length() < sirulNecriptat.length())
 		cheia += cheia;
-	string sirulCriptat = cripteaza(sirulNecriptat, cheia);
-	cout << "Sirul criptat este : " << sirulCriptat << "\n";
-	cout << "Sirul decriptat este : " << sirulNecriptat;
+	string sirulCriptat = encrypt(sirulNecriptat, cheia);
+	cout << "Crypted string : " << sirulCriptat << "\n";
+	cout << "Decrypted string : " << decrypt(sirulCriptat, cheia);
 	return 0;
 }
