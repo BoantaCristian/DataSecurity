@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1547056521 source:c:\users\boanta\desktop\facultate\data security\beaufort\beaufort\main.cpp
+	<iostream>
+	<string>
+	<algorithm>
+
